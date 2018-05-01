@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ummidock/skesa
+From: ubuntu:trusty-20170817
 
 %help
 A Singulairty image for Shovill and Skesa asssembler
@@ -43,7 +43,7 @@ Build 1.0
     sudo update-locale
 
     
-    sudo apt-get --yes install unzip pigz git-all gcc openjdk-7-jre-headless g++ make libz-dev wget tar liblzma-dev libbz2-dev liblist-moreutils-perl libmoo-perl libjson-perl libncurses5-dev python
+    sudo apt-get --yes install unzip pigz git-all gcc openjdk-7-jre-headless g++ make libz-dev wget tar liblzma-dev libbz2-dev liblist-moreutils-perl libmoo-perl libjson-perl libncurses5-dev python python3
 
 
     echo "Installing Shovill dependencies"
@@ -150,6 +150,9 @@ Build 1.0
         echo "Drumroll please.... Shovill"
         git clone https://github.com/tseemann/shovill.git
     fi
+
+    echo "Skesa"
+    wget ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/skesa/skesa.static && mv skesa.static skesa && chmod +x skesa  
 
     echo "Sorting some env variables..."
     sudo echo 'LANGUAGE="en_US:en"' >> $SINGULARITY_ENVIRONMENT
